@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-// import { csvParseRows } from "d3-dsv";
+import './Homepage.css';
+
 import { rollups } from "d3-array";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
 
@@ -42,23 +43,23 @@ const Histogram2=() => {
     };
 
     return (
-        <div>
-            <h1>Without stopwords</h1>
+        <div className="chart">
+            <h2>Histogram Without stopwords</h2>
             {!showHistogram && (<div>
-            <form onSubmit={handleSubmit}>
-                <button type="submit" >Submit</button>
+            <form onSubmit={handleSubmit} className="submit_button">
+                <button type="submit" >Show</button>
             </form></div>)}
             {showHistogram && (
-                <div>
+                <div className="chart">
                    
-                    <BarChart width={1500} height={500} data={data}>
-                        <XAxis dataKey="0" />
-                        <YAxis />
+                    <BarChart width={1200} height={250} data={data} barCategoryGap={0}>
+                        <XAxis dataKey="0" name="Word" />
+                        <YAxis name="Count"/>
                         <Tooltip formatter={(value, name) => (typeof value === 'string' ? [value.split(": ")[1]] : [value])} />
                        
                         <Bar dataKey="1" fill= "#663399" />
                     </BarChart>
-                    <button onClick={handleExport}>Export</button>
+                    <button onClick={handleExport} className="export_button">Export to CSV</button>
                 </div>
             )}
         </div>

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-// import { csvParseRows } from "d3-dsv";
+
 import { rollups } from "d3-array";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
+import './Homepage.css';
 
 // import stopword, {removeStopwords} from 'stopword';
 const Histogram=() => {
@@ -17,7 +18,7 @@ const Histogram=() => {
         
         const words =
             // Remove punctuation characters from the string
-            text.replace(regex, ' ').toLowerCase().split(/\s+/);
+            text.replace(regex, '').toLowerCase().split(/\s+/);
         const wordCounts = rollups(
             words,
             (value) => value.length,
@@ -42,23 +43,24 @@ const Histogram=() => {
     };
 
     return (
-        <div>
-            <h1>Terribly Tiny Tales Assignment</h1>
+        <div className="chart">
+            <div className="header"><h1>Terribly Tiny Tales</h1></div>
+            <h2>Click below to Show Histogram </h2>
             {!showHistogram && (<div>
-            <form onSubmit={handleSubmit}>
-                <button type="submit" >Submit</button>
+            <form onSubmit={handleSubmit} className="submit_button">
+                <button type="submit" >Show</button>
             </form></div>)}
             {showHistogram && (
-                <div>
+                <div className="chart">
                    
-                    <BarChart width={1500} height={500} data={data}>
+                    <BarChart width={1200} height={250} data={data} barCategoryGap={0}>
                         <XAxis dataKey="0" />
                         <YAxis />
                         <Tooltip formatter={(value, name) => (typeof value === 'string' ? [value.split(": ")[1]] : [value])} />
                         
                         <Bar dataKey="1" fill= "#663399" />
                     </BarChart>
-                    <button onClick={handleExport}>Export</button>
+                    <button onClick={handleExport} className="export_button">Export to CSV</button>
                 </div>
             )}
         </div>

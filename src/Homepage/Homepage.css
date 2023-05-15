@@ -1,0 +1,36 @@
+
+.chart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.chart h2{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-image: linear-gradient(to right, rgb(61, 61, 224), rebeccapurple);
+    width: 100%;
+    color: aqua;
+    font-family: Lucida Handwriting;
+    font-size: 20px;
+}
+.submit_button button{
+    background-color: rebeccapurple;
+    color : whitesmoke;
+    padding: 8px;
+    border-radius: 12px;
+
+
+}
+
+.export_button{
+    background-color: rebeccapurple;
+    color : whitesmoke;
+    padding: 8px;
+    border-radius: 12px;
+}
